@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEXUS 2090 – The AI platform from the future</title>
+<meta name="description" content="NEXUS 2090 is an AI platform built by Babyface: chat, create, and travel through time with AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas><div class="glow"></div>
+<nav><span class="logo">NEXUS<b> 2090</b></span><div><a href="#systems">Systems</a><a href="#studio">NEXUS Editor</a><a href="#chat">Try NEXUS-9</a><a href="#roadmap">Roadmap</a><a class="keep" href="#dev">Developer</a></div></nav>
+<main>
+<section class="hero" style="padding-top:4rem">
+<div>
+<span class="date" id="clock">Loading 2090…</span>
+<h1>The AI platform<br>from <span>2090</span></h1>
+<p>NEXUS brings chat, creation, and time-travel simulation into one platform. Built by Babyface for the people who will live in the next century.</p>
+<div class="btns"><a class="btn p" href="#chat">Talk to NEXUS-9</a><button class="btn" id="warp">Hold to engage warp</button></div>
+</div>
+<div id="orbwrap"><canvas id="orb" aria-label="Rotating 3D neural orb"></canvas></div>
+</section>
+
+<section id="systems">
+<h2>Four systems, one platform</h2>
+<p class="sub">Move your cursor over a card. Each one is a different way to work with NEXUS.</p>
+<div class="grid">
+<div class="card"><i>🧠</i><h3>Neural Chat</h3><p>Ask questions, plan projects, and get answers in plain language.</p></div>
+<div class="card"><i>🎨</i><h3>Creation Studio</h3><p>Turn ideas into text, images, music, and code.</p></div>
+<div class="card"><i>⏳</i><h3>Time Engine</h3><p>Simulate how a decision plays out in 2030, 2050, or 2090.</p></div>
+<div class="card"><i>🛰️</i><h3>Orbit API</h3><p>Connect NEXUS to your own apps with a few lines of code.</p></div>
+</div>
+</section>
+
+<section id="chat">
+<h2>Try NEXUS-9</h2>
+<p class="sub">Our assistant. Pick a question or type your own.</p>
+<div class="chat">
+<header>● NEXUS-9 online</header>
+<div id="log"><div class="m b">Hello, I’m NEXUS-9. Ask me about the platform, the year 2090, or who built it.</div></div>
+<div class="q" id="q"><button>What is NEXUS?</button><button>What year is it?</button><button>Who built this?</button><button>What can you create?</button></div>
+<form id="f"><input id="in" placeholder="Type a message…" aria-label="Message" autocomplete="off"><button>Send</button></form>
+</div>
+<p class="note">This demo uses preset replies. It is not connected to a live AI model yet.</p>
+</section>
+
+<section id="studio">
+<h2>NEXUS Editor</h2>
+<p class="sub">Upload a video and the editor opens on its own page. Describe the edit in plain words, and NEXUS picks the effects, edits the video, and gives you a file to download. Your video stays in your browser.</p>
+<div class="drop" id="drop">
+<p style="font-size:1.1rem;margin:0 0 6px">Drop a video here</p>
+<p class="note" style="margin:0 0 18px">MP4, MOV or WebM</p>
+<label class="btn p">Upload video<input id="vf" type="file" accept="video/*" hidden></label>
+</div>
+</section>
+
+<section id="roadmap">
+<h2>Roadmap to 2090</h2>
+<p class="sub">Where NEXUS is going.</p>
+<div class="tl">
+<div><b>2026</b><p>Launch of Neural Chat and Creation Studio.</p></div>
+<div><b>2035</b><p>Orbit API opens to developers worldwide.</p></div>
+<div><b>2050</b><p>Time Engine simulates city-scale decisions.</p></div>
+<div><b>2070</b><p>NEXUS assistants in every home and classroom.</p></div>
+<div><b>2090</b><p>The full platform goes live.</p></div>
+</div>
+</section>
+
+<section id="dev">
+<h2>Meet the developer</h2>
+<p class="sub">NEXUS 2090 was created by Babyface. Message directly for projects, partnerships, or questions.</p>
+<div class="dev">
+<div class="card"><h3>Babyface</h3><p>Founder and developer</p><div class="big">0912 999 9324</div>
+<div class="btns" style="margin:0"><a class="btn p" href="https://wa.me/2349129999324" target="_blank" rel="noopener">Chat on WhatsApp</a><button class="btn" id="copy">Copy number</button><a class="btn" href="tel:+2349129999324">Call</a></div></div>
+<div class="card"><h3>Socials</h3><p>Follow the build.</p><div class="soc" id="soc"></div></div>
+</div>
+</section>
+</main>
+<footer>© 2026 NEXUS 2090 · Built by Babyface</footer>
+
+<div id="editor" hidden role="dialog" aria-label="NEXUS Editor">
+<div class="eh"><span class="logo">NEXUS<b> EDITOR</b></span><button class="btn" id="exit">Exit editor</button></div>
+<div class="studio">
+<div>
+<canvas id="sc" width="640" height="360" aria-label="Video preview"></canvas>
+<div class="btns"><button class="btn" id="pl">Play</button><button class="btn" id="rs">Reset edits</button><label class="btn">Add music<input id="af" type="file" accept="audio/*" hidden></label><label class="btn">Match a reference video<input id="rf" type="file" accept="video/*" hidden></label></div>
+<div class="panel" style="margin-top:18px"><h3 style="margin-bottom:8px">Download</h3>
+<p class="note" id="dn">When you are happy with the preview, render the video. Your download appears here.</p>
+<video id="out" controls hidden playsinline style="width:100%;border-radius:12px;margin:10px 0"></video>
+<div class="btns"><button class="btn p" id="ex">Render video</button><button class="btn" id="dl" hidden>Download video</button></div></div>
+</div>
+<div class="panel">
+<h3 style="margin-bottom:10px">Tell NEXUS what to do</h3>
+<textarea id="pr" class="txt" rows="4" placeholder="Example: make it cinematic, add the title “My Trip”, fade in and out, and slow it down" aria-label="Edit instructions"></textarea>
+<div class="pre" id="eg" style="margin-top:10px"></div>
+<button class="btn p" id="go" style="width:100%">Edit with NEXUS</button>
+<div id="plan" aria-live="polite"></div>
+<p class="note" id="st">Describe the look you want. You can send more prompts to keep refining.</p>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
