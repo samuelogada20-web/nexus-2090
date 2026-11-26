@@ -11,13 +11,26 @@
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas><div class="glow"></div>
-<nav><span class="logo">NEXUS<b> 2090</b></span><div><a href="#systems">Systems</a><a href="#studio">NEXUS Editor</a><a href="#chat">Try NEXUS-9</a><a href="#roadmap">Roadmap</a><a class="keep" href="#dev">Developer</a></div></nav>
+<aside id="side" aria-label="Sidebar">
+<span class="logo">NEXUS<b> 2090</b></span>
+<form id="sf"><input id="sq" class="txt" placeholder="Search NEXUS…" aria-label="Search" style="margin-bottom:10px"></form>
+<a href="#studio"><span class="i">＋</span>New edit</a>
+<a href="#chat"><span class="i">💬</span>NEXUS-9 chat</a>
+<a href="#systems"><span class="i">◈</span>Systems</a>
+<a href="#roadmap"><span class="i">➤</span>Roadmap</a>
+<a href="#dev"><span class="i">☎</span>Developer</a>
+<h4>Current edit</h4>
+<div id="rec"><span class="note" style="padding:0 12px">No edits yet</span></div>
+<div id="me"><span id="who">Guest</span><button class="btn" id="lg" style="padding:6px 16px">Log in</button></div>
+</aside>
+
+<nav><button class="btn" id="menu" aria-label="Open menu">☰</button><span class="logo">NEXUS<b> 2090</b></span><div><a href="#systems">Systems</a><a href="#studio">NEXUS Editor</a><a href="#chat">Try NEXUS-9</a><a href="#roadmap">Roadmap</a><a class="keep" href="#dev">Developer</a></div></nav>
 <main>
 <section class="hero" style="padding-top:4rem">
 <div>
 <span class="date" id="clock">Loading 2090…</span>
 <h1>The AI platform<br>from <span>2090</span></h1>
-<p>NEXUS brings chat, creation, and time-travel simulation into one platform. Built by Babyface for the people who will live in the next century.</p>
+<p>NEXUS brings chat, creation, and time-travel simulation into one red-lit dreamland. Built by Babyface for the people who will live in the next century.</p>
 <div class="btns"><a class="btn p" href="#chat">Talk to NEXUS-9</a><button class="btn" id="warp">Hold to engage warp</button></div>
 </div>
 <div id="orbwrap"><canvas id="orb" aria-label="Rotating 3D neural orb"></canvas></div>
@@ -101,6 +114,21 @@
 </div>
 </div>
 </div>
+<div id="login" hidden role="dialog" aria-label="Log in">
+<div class="lg-art"><canvas id="n3d" aria-label="Rotating 3D NEXUS logo"></canvas><h2>Welcome to NEXUS</h2><p>The AI platform from 2090.</p></div>
+<div class="lg-form">
+<button class="lx" id="lclose" aria-label="Close">✕</button>
+<div id="s1"><h3>Log in or sign up</h3><p>We’ll send a 6-digit code. No password needed.</p>
+<div class="tabs"><button class="on" data-t="email">Email</button><button data-t="phone">Phone</button></div>
+<div id="fe"><label for="em">Email address</label><input id="em" type="email" autocomplete="email" placeholder="you@example.com"></div>
+<div id="fp" hidden><label for="ph">Phone number</label><div class="row"><select id="cc" aria-label="Country code"><option>+234</option><option>+233</option><option>+254</option><option>+27</option><option>+1</option><option>+44</option><option>+91</option></select><input id="ph" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="912 999 9324"></div></div>
+<button class="rb" id="send">Send code</button><p class="err" id="e1" role="alert"></p></div>
+<div id="s2" hidden><h3>Enter your code</h3><p id="sentto"></p><div class="otp" id="otp"></div><div class="demo" id="demo" hidden></div>
+<button class="rb" id="ver">Verify and continue</button><p class="err" id="e2" role="alert"></p>
+<p class="small"><button class="lk" id="rsend">Resend code</button> · <button class="lk" id="back">Change contact</button></p></div>
+<div id="s3" hidden><div class="ok">✓</div><h3>You’re in</h3><p id="hi"></p><button class="rb" id="done">Continue to NEXUS</button></div>
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
