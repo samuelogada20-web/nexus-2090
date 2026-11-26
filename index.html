@@ -15,6 +15,7 @@
 <span class="logo">NEXUS<b> 2090</b></span>
 <form id="sf"><input id="sq" class="txt" placeholder="Search NEXUS…" aria-label="Search" style="margin-bottom:10px"></form>
 <a href="#studio"><span class="i">＋</span>New edit</a>
+<a href="#game"><span class="i">🎮</span>Play game</a>
 <a href="#chat"><span class="i">💬</span>NEXUS-9 chat</a>
 <a href="#systems"><span class="i">◈</span>Systems</a>
 <a href="#roadmap"><span class="i">➤</span>Roadmap</a>
@@ -31,7 +32,7 @@
 <span class="date" id="clock">Loading 2090…</span>
 <h1>The AI platform<br>from <span>2090</span></h1>
 <p>NEXUS brings chat, creation, and time-travel simulation into one red-lit dreamland. Built by Babyface for the people who will live in the next century.</p>
-<div class="btns"><a class="btn p" href="#chat">Talk to NEXUS-9</a><button class="btn" id="warp">Hold to engage warp</button></div>
+<div class="btns"><a class="btn p" href="#chat">Talk to NEXUS-9</a><button class="btn" id="warp">Hold to engage warp</button><a class="btn" href="#game">Play the game</a></div>
 </div>
 <div id="orbwrap"><canvas id="orb" aria-label="Rotating 3D neural orb"></canvas></div>
 </section>
@@ -128,6 +129,24 @@
 <p class="small"><button class="lk" id="rsend">Resend code</button> · <button class="lk" id="back">Change contact</button></p></div>
 <div id="s3" hidden><div class="ok">✓</div><h3>You’re in</h3><p id="hi"></p><button class="rb" id="done">Continue to NEXUS</button></div>
 </div></div>
+<div id="game" hidden role="dialog" aria-label="NEXUS Defender game">
+<div class="hud"><div><small>SCORE</small><b id="gs">0</b></div><div><small>BEST</small><b id="gb">0</b></div><div><small>LIVES</small><b id="gl">♥♥♥</b></div><div><small>LEVEL</small><b id="gv">1</b></div><div class="hb"><button class="btn" id="gpb" aria-label="Pause">⏸</button><button class="btn" id="gst" aria-label="Control settings">⚙</button><button class="btn" id="gx" aria-label="Exit game">✕</button></div></div>
+<div class="gfx" id="gfx"></div><div class="gtoast" id="gtoast" aria-live="polite"></div>
+<div class="gpanel" id="gm"><h2 id="gt">NEXUS Defender</h2><p id="gp"></p><p class="gkeys" id="gleg">Power-ups on the road, fly into them:<br>♥ extra life · 🛡 shield · ⚡ rapid fire · ✦ triple shot · 💥 bomb</p><div class="btns" style="justify-content:center"><button class="btn p" id="gplay">Play</button><button class="btn" id="gset">Controls</button></div></div>
+<div class="gpanel" id="gc" hidden><h2>Control settings</h2>
+<div class="gset">
+<label>Steering<select id="c-ptr"><option value="1">Mouse or touch</option><option value="0">Keyboard</option></select></label>
+<label>Sensitivity <input id="c-sens" type="range" min="0.5" max="2" step="0.1"></label>
+<label>Invert vertical <input id="c-inv" type="checkbox"></label>
+<label>Auto-fire <input id="c-auto" type="checkbox"></label>
+<label>On-screen FIRE button <input id="c-fb" type="checkbox"></label>
+<label>Sound effects <input id="c-snd" type="checkbox"></label>
+<label>Difficulty<select id="c-diff"><option value="0">Easy</option><option value="1">Normal</option><option value="2">Hard</option></select></label>
+<div class="gkeys">Keyboard: WASD or arrow keys to move. Space to fire. P or Esc to pause.<br>Mouse or touch: move to steer, hold click or the FIRE button to shoot.</div>
+</div>
+<div class="btns" style="justify-content:center;margin-top:16px"><button class="btn p" id="cdone">Done</button></div></div>
+<button class="gfire" id="gf" hidden>FIRE</button>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 </body>

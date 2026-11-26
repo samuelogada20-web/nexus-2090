@@ -12,13 +12,14 @@ This is a plain static site: no build step, no framework, no server needed to vi
 2. [Quick start](#quick-start)
 3. [Features](#features)
 4. [The video editor](#the-video-editor)
-5. [Login and OTP](#login-and-otp)
-6. [Customising](#customising)
-7. [Deploying](#deploying)
-8. [Browser support](#browser-support)
-9. [Known limits](#known-limits)
-10. [Troubleshooting](#troubleshooting)
-11. [Tech stack](#tech-stack)
+5. [The game: NEXUS Defender](#the-game-nexus-defender)
+6. [Login and OTP](#login-and-otp)
+7. [Customising](#customising)
+8. [Deploying](#deploying)
+9. [Browser support](#browser-support)
+10. [Known limits](#known-limits)
+11. [Troubleshooting](#troubleshooting)
+12. [Tech stack](#tech-stack)
 
 ---
 
@@ -64,9 +65,10 @@ python3 -m http.server 8000
 | **Developer section** | WhatsApp chat button, copy-number button, call button, and a socials card. |
 | **Sidebar** | Logo, search, navigation, the current edit, and the login status. Slides in from the ☰ button on phones. |
 | **NEXUS Editor** | Upload a video, edit it by typing a prompt, add music, and download the result. See below. |
+| **Game** | NEXUS Defender: shoot the floating objects with the stealth ship. 3 lives, power-ups, rising levels and control settings. |
 | **Login** | White and red page with a rotating 3D NEXUS logo and an email or phone OTP flow. See below. |
 
-The page uses hash routes: `#editor` opens the editor page and `#login` opens the login page.
+The page uses hash routes: `#editor` opens the editor, `#login` the login page and `#game` the game.
 
 ---
 
@@ -122,6 +124,53 @@ The video is recorded from the canvas in real time. A 1-minute video takes about
 
 ---
 
+## The game: NEXUS Defender
+
+Open it from the sidebar (**Play game**) or the **Play the game** button on the home page (`#game`). The page content hides and the 3D tunnel becomes the playfield.
+
+**Rules**
+- You fly the stealth ship. The floating wireframe objects fly toward you.
+- Shoot them to score 10 points each.
+- You start with **3 lives** (maximum 5). If an object hits your ship you lose a life, the object is destroyed, and you are protected for 2 seconds. At 0 lives it is **game over**. Objects that miss and fly past cost nothing.
+- **It gets faster:** every 15 seconds you reach a new level. Objects arrive faster and more often, and the tunnel speeds up. Your score also speeds things up.
+- Your best score is saved in the browser.
+
+**Power-ups.** Glowing icons fly down the road about every 8 to 13 seconds. Fly into one to collect it.
+
+| Icon | Power-up | Effect |
+|---|---|---|
+| ♥ | Extra life | +1 life (up to 5) |
+| 🛡 | Shield | 8 seconds: objects that touch you are destroyed and cost no life (+5 points) |
+| ⚡ | Rapid fire | 8 seconds of double fire rate |
+| ✦ | Triple shot | 8 seconds of three bullets at once |
+| 💥 | Bomb | Destroys every object on screen (+10 each) |
+
+**Controls**
+
+| Action | Mouse or touch | Keyboard |
+|---|---|---|
+| Move | Move the mouse or drag a finger | WASD or arrow keys |
+| Fire | Hold click, or hold the on-screen FIRE button | Space |
+| Pause | ⏸ button | P or Esc |
+| Settings | ⚙ button | none |
+| Exit | ✕ button | none |
+
+**Control settings (⚙ or "Controls" on the menu)**
+
+| Setting | Options |
+|---|---|
+| Steering | Mouse or touch, or Keyboard |
+| Sensitivity | 0.5x to 2x |
+| Invert vertical | On or off |
+| Auto-fire | On or off |
+| On-screen FIRE button | On or off (on by default for touch screens) |
+| Sound effects | On or off |
+| Difficulty | Easy, Normal, Hard |
+
+Settings are saved in the browser (`localStorage` key `nx_game`). The game needs the 3D background, so it requires WebGL and an internet connection for three.js.
+
+---
+
 ## Login and OTP
 
 The login page opens from the sidebar button (`#login`). The user chooses **Email** or **Phone** (country code defaults to +234), receives a 6-digit code, and enters it. Codes expire from memory when the page is closed, resend has a 30-second timer, and there is a limit of 5 wrong attempts.
@@ -165,6 +214,7 @@ After a successful login the identifier is kept in `localStorage` under `nx_user
 | WhatsApp number | In `index.html`, change the `wa.me/2349129999324` link and the visible `0912 999 9324`. In `script.js`, change the copied number in the copy button handler. Use the international format without `+` or spaces in the `wa.me` link. |
 | Chat demo replies | The `R` array in the "chat demo" block in `script.js`. Each entry is a pattern and a reply. |
 | Roadmap and system cards | Plain HTML in `index.html`. |
+| Game balance (lives, speed, spawn rates, power-ups) | `gstep()`, `reset()` and the `PK` list in the "game core" block of `script.js`. |
 | Ship design | The ship block in `script.js` (search for `var sh=new T.Group()`). |
 | Editor prompt vocabulary | The `local()` function in `script.js`. |
 | Country codes on login | The `<select id="cc">` options in `index.html`. |
@@ -202,6 +252,7 @@ WebGL is required for the 3D background. If it fails to load, the page still wor
 - The editor does colour grading, motion effects, transitions, captions and audio mixing. It cannot remove objects, change backgrounds, generate scenes, or remove noise. Those need a server with video AI models.
 - Transitions play at the start and end of one clip. Transitions between several clips need a multi-clip editor.
 - Rendering is real time and the tab must stay open.
+- The game has no leaderboard (only your best score on this device).
 - The sidebar keeps only the current edit, not a history of projects.
 - The 3D ship is a modelled look-alike, not a copy of any reference image.
 
